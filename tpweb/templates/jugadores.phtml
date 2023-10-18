@@ -1,0 +1,15 @@
+<ul>
+    <?php require ('./templates/header.phtml') ?>
+    <?php
+    foreach ($info_jugadores as $jugador) { ?>
+    <li> <?php echo $jugador->nombre ?> 
+    <?php echo $jugador->apellido ?>
+    <?php echo $jugador->edad ?>
+    <?php echo $jugador->posicion ?>
+    <?php echo $jugador->club ?>
+    </li>
+
+<?php
+    }
+?>
+</ul>

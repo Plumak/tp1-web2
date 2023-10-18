@@ -1,0 +1,16 @@
+<?php require_once 'templates/header.phtml' ?>
+<ul>
+    <?php
+    foreach ($info_cromero as $jugador) { ?>
+
+    <li> <?php echo $jugador->nombre ?> 
+    <?php echo $jugador->apellido ?>
+    <?php echo $jugador->edad ?>
+    <?php echo $jugador->posicion ?>
+    <?php echo $jugador->club ?>
+    </li>
+
+<?php
+    }
+?>
+</ul>

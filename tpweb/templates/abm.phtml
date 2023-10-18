@@ -1,0 +1,21 @@
+<?php require_once('./templates/header.phtml') ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="POST">
+    <input type="text" name="nombre" placeholder="Nombre de jugador" required>
+    <input type="text" name="apellido" placeholder="Apellido de jugador" required>
+    <input type="text" name="edad" placeholder="Edad del jugador" required>
+    <input type="text" name="posicion" placeholder="Posicion del jugador" required>
+    <button type= 'submit'>Lista</button>
+    <button type= 'submit'>Agregar</button>
+    <button type= 'submit'>Editar</button>
+    <button type= 'submit'>Eliminar</button>
+    </form>
+</body>
+</html>

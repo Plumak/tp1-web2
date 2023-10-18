@@ -1,0 +1,14 @@
+<ul>
+    <?php require ('templates/header.phtml') ?>
+    <?php
+    foreach ($boca_jugadores as $jugador) { ?>
+    <li> <?php echo $jugador->nombre ?> 
+    <?php echo $jugador->apellido ?>
+    <?php echo $jugador->edad ?>
+    <?php echo $jugador->posicion ?>
+    </li>
+
+<?php
+    }
+?>
+</ul>
