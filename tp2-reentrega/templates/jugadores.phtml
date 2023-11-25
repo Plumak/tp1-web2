@@ -1,0 +1,62 @@
+<?php require ('./templates/header.phtml') ?>
+<?php foreach ($jugadores as $jugador) { ?>
+    <table>
+    <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Edad</th>
+    <th>Posicion</th>
+    <th>Id club</th>
+    <th>Club</th>
+    <th>Id Jugador</th>
+    </tr>
+    <tr>
+    <td> <?php echo $jugador->nombre ?> </a> </td>
+    <td> <?php echo $jugador->apellido ?> </td>
+    <td> <?php echo $jugador->edad ?> </td>
+    <td> <?php echo $jugador->posicion ?> </td> 
+    <td><?php echo $jugador->id_club ?> </td>
+    <td><?php echo $jugador-> club ?> </td>
+    <td><?php echo $jugador-> id_jugador ?> </td>  
+    <?php if (isset(($_SESSION["logueado"]))) : ?>
+    <td><div class="actions"> <a href="eliminarjugador/<?php echo $jugador->id_jugador?>" type="button" class="btn btn-danger ml-auto">Borrar</a></div></td>
+    <?php  endif ?>
+    <td> <div class="actions"> <a href="jugadores/<?=$jugador->id_jugador?>" type="button" class="btn btn-info ml-auto">Ver</a></div> </td>
+    </tr>
+    </table>
+<?php
+    }
+?>
+<?php if (isset(($_SESSION["logueado"]))) : ?>
+    <?php // FORM para Agregar un jugador // ?>
+    <form action="agregarjugador" method="POST">
+    <input type="text" name="nombre" placeholder="Nombre de jugador" required>
+    <input type="text" name="apellido" placeholder="Apellido de jugador" required>
+    <input type="number" name="edad" placeholder="Edad del jugador" required>
+    <input type="text" name="posicion" placeholder="Posicion del jugador" required>
+    <select name="club">
+    <?php foreach ($jugadores as $jugador){ ?>
+        <option value="<?= $jugador->id_club?>" required><?= $jugador->club?></option>
+        <?php } ?>
+    </select>
+    <button type="submit" class="btn btn-success">Agregar</button>
+    </form>
+
+    <?php // FORM para Editar un jugador // ?>
+    <form action="editarjugador" method="POST">
+    <input type="number" name="id_jugador" placeholder="Id del jugador a editar" required>
+    <input type="text" name="nombre" placeholder="Nombre de jugador" required>
+    <input type="text" name="apellido" placeholder="Apellido de jugador" required>
+    <input type="number" name="edad" placeholder="Edad del jugador" required>
+    <input type="text" name="posicion" placeholder="Posicion del jugador" required>
+    <select name="id_club">
+    <?php foreach ($jugadores as $jugador){ ?>
+        <option value="<?= $jugador->id_club?>" required><?= $jugador->club?></option>
+        <?php } ?>
+    </select>
+    <button type="submit" class="btn btn-primary">Editar</button>
+    </form>
+    <?php endif ?>
+<link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>

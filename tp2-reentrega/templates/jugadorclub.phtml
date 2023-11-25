@@ -1,0 +1,24 @@
+<?php require ('./templates/header.phtml') ?>
+<?php foreach ($JugadorPorClub as $jugador) { ?>
+    <table>
+    <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Edad</th>
+    <th>Posicion</th>
+    <th>Id club</th>
+    <th>Club</th>
+    </tr>
+    <tr>
+    <td> <?php echo $jugador->nombre ?> </td>
+    <td> <?php echo $jugador->apellido ?> </td>
+    <td> <?php echo $jugador->edad ?> </td>
+    <td> <?php echo $jugador->posicion ?> </td> 
+    <td><?php echo $jugador->id_club ?> </td>
+    <td><?php echo $jugador->club ?> </td> 
+    </tr>
+    </table>
+    <link rel="stylesheet" href="style.css">
+<?php
+    }
+?>

@@ -1,0 +1,21 @@
+<?php
+require_once ('config.php');
+class JugadoresModel {
+    private $db;
+    function __construct (){
+        $this->db = new PDO("mysql:host=".HOST.";dbname=".DBNAME.";charset=utf8", 'root', '');
+    }
+  function ObtenerJugadores() {
+        $sentencia = $this->db->prepare("SELECT * FROM jugadores INNER JOIN clubes ON jugadores.id_club = clubes.id_club");
+    $sentencia->execute();
+    $info_jugadores = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    return $info_jugadores;
+    }
+     function ObtenerJugadorId($id) {
+        $sentencia = $this->db->prepare("SELECT * FROM jugadores INNER JOIN clubes ON jugadores.id_club = clubes.id_club WHERE jugadores.id_jugador = ?");
+    $sentencia->execute([$id]);
+    $info_jugador = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    return $info_jugador;
+    }
+}
+?>

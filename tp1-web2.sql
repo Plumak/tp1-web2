@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2023 a las 21:15:25
+-- Tiempo de generación: 25-11-2023 a las 05:15:44
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -29,14 +29,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `clubes` (
   `id_club` int(11) NOT NULL,
-  `nombre` text NOT NULL
+  `club` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `clubes`
 --
 
-INSERT INTO `clubes` (`id_club`, `nombre`) VALUES
+INSERT INTO `clubes` (`id_club`, `club`) VALUES
 (3001, 'Boca Juniors'),
 (3002, 'Inter Miami'),
 (3003, 'Santamarina'),
@@ -63,10 +63,29 @@ CREATE TABLE `jugadores` (
 
 INSERT INTO `jugadores` (`id_jugador`, `nombre`, `apellido`, `edad`, `posicion`, `id_club`) VALUES
 (1001, 'Sergio', 'Romero', 36, 'Arquero', 3001),
-(1002, 'Dario', 'Benedetto', 33, 'Delantero', 3001),
+(1002, 'Dario', 'Bendetto', 36, 'Delantero', 3001),
 (1003, 'Lionel', 'Messi', 36, 'Delantero', 3002),
 (1004, 'Martin', 'Michel', 39, 'Delantero', 3003),
 (1005, 'Cristian', 'Romero', 25, 'Defensor', 3004);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `usuario` varchar(225) NOT NULL,
+  `password` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `usuario`, `password`) VALUES
+(1, 'webadmin', '$2y$10$8ycR/hMRQv2x8PKpWgoI8O41yCAWs0O762lAoInPZrxZOp5OxwiJi');
 
 --
 -- Índices para tablas volcadas
@@ -86,6 +105,12 @@ ALTER TABLE `jugadores`
   ADD KEY `id_club` (`id_club`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -93,7 +118,13 @@ ALTER TABLE `jugadores`
 -- AUTO_INCREMENT de la tabla `jugadores`
 --
 ALTER TABLE `jugadores`
-  MODIFY `id_jugador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1006;
+  MODIFY `id_jugador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1029;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

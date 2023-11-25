@@ -1,0 +1,40 @@
+<?php require ('templates/header.phtml'); ?>
+    <?php
+    foreach ($clubes as $club) { ?>
+<table>
+    <tr>
+    <th>Nombre club</th>
+    <th>Id club</th>
+    </tr>
+    <tr> 
+    <?php /* <td><a href=" <?php $club->club ?>" > <?php echo $club->club ?> </a> </td>  */?> 
+ 
+    <td> <?php echo $club->club ?> </td>
+    <td> <?php echo $club->id_club ?> </td> 
+    <?php if (isset(($_SESSION["logueado"]))) : ?>
+        <td><div class="actions"><a href="eliminarclub/<?=$club->id_club?>" type="button" class="btn btn-danger ml-auto">Borrar</a> </div> </td>
+    <?php  endif ?>
+    <td><div class="actions"><a href="clubes/<?=$club->id_club?>" type="button" class="btn btn-info ml-auto">Ver club</a> </div> </td>
+    </tr>
+    </table>
+<?php
+    }
+?>
+<?php if (isset(($_SESSION["logueado"]))) : ?>
+<?php // FORM para agregar un club // ?>
+    <form action="agregarclub" method="POST">
+    <input type="text" name="nombre" placeholder="Nombre del club" required>
+    <input type="number" name="id_club" placeholder="Numero id del club" required>
+    <button type="submit" class="btn btn-success">Agregar</button>
+    </form>
+
+    <?php // FORM para editar un club // ?>
+    <form action="editarclub" method="POST">
+    <input type="number" name="id_club" placeholder="Id del club a editar" required>
+    <input type="text" name="nombre" placeholder="Nombre del club" required>
+    <button type="submit" class="btn btn-primary">Editar</button>
+    </form>
+    <?php endif ?>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
